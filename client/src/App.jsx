@@ -1,6 +1,7 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 import NavMain from "./components/NavMain";
+import ListCrypto from "./components/ListCrypto";
 import Home from "./pages/Home";
 import Signin from "./pages/Signin";
 import Signup from "./pages/Signup";
@@ -15,6 +16,7 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route exact path="/signin" component={Signin} />
         <Route exact path="/signup" component={Signup} />
+        <Route exact path="/crypto" component={ListCrypto} />
         <ProtectedRoute exact path="/profile" component={Profile} />
       </Switch>
     </div>
