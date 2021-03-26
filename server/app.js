@@ -17,7 +17,7 @@ const cors = require("cors");
 // const corsOptions = { origin: process.env.FRONTEND_URL, credentials: true };
 
 app.use(cors({
-  origin:'http://localhost:3000',
+  origin:"http://localhost:3000",
   credentials: true
 }))
 app.use(logger("dev")); // This logs HTTP reponses in the console.
