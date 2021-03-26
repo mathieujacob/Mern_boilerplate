@@ -2,6 +2,7 @@ import React from "react";
 import { Switch, Route } from "react-router-dom";
 import NavMain from "./components/NavMain";
 import ListCrypto from "./components/ListCrypto";
+import SingleCrypto from "./components/SingleCrypto";
 import Home from "./pages/Home";
 import Signin from "./pages/Signin";
 import Signup from "./pages/Signup";
@@ -17,6 +18,7 @@ function App() {
         <Route exact path="/signin" component={Signin} />
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/crypto" component={ListCrypto} />
+        <Route exact path="/crypto/:id" component={SingleCrypto}/> 
         <ProtectedRoute exact path="/profile" component={Profile} />
       </Switch>
     </div>

@@ -1,10 +1,14 @@
 .NavMain {
-  background-color: transparent;
+  background-color: white;
+  border-bottom: 1px solid rgb(236, 239, 241);
   color: rgb(57, 57, 57);
   display: flex;
   align-items: center;
   padding: 20px;
   height: 70px;
+  padding: 0px 20px;
+  box-sizing: content-box;
+ 
 }
 
 .NavMain .nav-list {
@@ -14,4 +18,9 @@
 
 .NavMain .nav-list li:not(:last-child) {
   margin-right: 20px;
+}
+
+.logo {
+  width: 20%;
+  height: 20%;
 }

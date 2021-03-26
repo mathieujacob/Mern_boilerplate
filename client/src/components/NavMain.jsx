@@ -22,9 +22,10 @@ const NavMain = (props) => {
   return (
     <nav className="NavMain">
       <NavLink exact to="/">
-        <h3 className="logo">App name</h3>
+        <h3 className="logo"><img src="logo.png" alt="cryptorama"/></h3>
       </NavLink>
       <ul className="nav-list">
+        
         {context.isLoggedIn && (
           <React.Fragment>
             <li>
@@ -39,6 +40,9 @@ const NavMain = (props) => {
         )}
         {!context.isLoggedIn && (
           <React.Fragment>
+             <li>
+              <NavLink to="/crypto">Cryptos</NavLink>
+            </li>
             <li>
               <NavLink to="/signin">Log in</NavLink>
             </li>
@@ -48,7 +52,10 @@ const NavMain = (props) => {
           </React.Fragment>
         )}
       </ul>
+      
     </nav>
+
+
   );
 };
 
