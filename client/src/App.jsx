@@ -8,6 +8,7 @@ import Signin from "./pages/Signin";
 import Signup from "./pages/Signup";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Profile from "./pages/Profile";
+import Info from "./pages/Info";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/crypto" component={ListCrypto} />
         <Route exact path="/crypto/:id" component={SingleCrypto}/> 
+        {/* <Route exact path="/info" component={Info}/>  */}
         <ProtectedRoute exact path="/profile" component={Profile} />
       </Switch>
     </div>

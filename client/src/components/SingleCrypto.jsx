@@ -34,14 +34,15 @@ class SingleCrypto extends Component {
     
         return (
           
-      <div> 
-          <h1>  {this.state.crypto.filter(curr => curr.id === id)[0].id} </h1> 
-         <h2> This cryptocurrency is ranked number {this.state.crypto.filter(curr => curr.id === id)[0].rank}</h2> 
-         <h3> The Market Cap is currently at {this.state.crypto.filter(curr => curr.id === id)[0].market_cap}</h3> 
+      <div class="crypto-dets"> 
+          <h1>  
+          <img class="logo-size" src= {this.state.crypto.filter(curr => curr.id === id)[0].logo_url}alt="" /> </h1> 
+         <h2> {this.state.crypto.filter(curr => curr.id === id)[0].id} is ranked number {this.state.crypto.filter(curr => curr.id === id)[0].rank}</h2> 
+         <h3> The Market Cap is currently at {this.state.crypto.filter(curr => curr.id === id)[0].market_cap} €</h3> 
          <h4> The status off this cryptocurrency is {this.state.crypto.filter(curr => curr.id === id)[0].status}</h4> 
          <h5> Here is the price date : {this.state.crypto.filter(curr => curr.id === id)[0].price_date}</h5> 
-         <h5> Current Price of the {this.state.crypto.filter(curr => curr.id === id)[0].id} : {this.state.crypto.filter(curr => curr.id === id)[0].price}</h5>
-         <img src= {this.state.crypto.filter(curr => curr.id === id)[0].logo_url}alt="" /> 
+         <h5> Current Price of the {this.state.crypto.filter(curr => curr.id === id)[0].id} : {this.state.crypto.filter(curr => curr.id === id)[0].price} €</h5>
+      
       </div>
         )
        
