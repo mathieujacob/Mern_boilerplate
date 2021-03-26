@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const articleSchema = new Schema({
   title: String,
   author: String,
-  contenu: "",
+  contenu:String,
   publiDate: Date,
   //   userId:{type: Schema.Types.ObjectId,
   //     ref: "apicall",}
