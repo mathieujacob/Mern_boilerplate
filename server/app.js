@@ -14,9 +14,12 @@ const cors = require("cors");
 /**
  * Middlewares
  */
-const corsOptions = { origin: process.env.FRONTEND_URL, credentials: true };
+// const corsOptions = { origin: process.env.FRONTEND_URL, credentials: true };
 
-app.use(cors(corsOptions));
+app.use(cors({
+  origin:'http://localhost:3000',
+  credentials: true
+}))
 app.use(logger("dev")); // This logs HTTP reponses in the console.
 app.use(express.json()); // Access data sent as json @req.body
 app.use(express.urlencoded({ extended: false }));

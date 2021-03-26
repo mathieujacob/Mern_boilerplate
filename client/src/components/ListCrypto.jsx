@@ -35,12 +35,12 @@ class ListCrypto extends Component {
         {this.state.crypto.map((cryptos) => {
           return (
             <div key={cryptos._id}>
-              <img src={cryptos.logo_url} alt="" />
-              <h2>{cryptos.currency} </h2>
-              <h3>{cryptos.status}</h3>
-              <h4>{cryptos.market_cap}</h4>
-              <h5>{cryptos.rank}</h5>
-              <h6>{cryptos.id}</h6>
+              <img src={cryptos.logo_url} alt="" classname='logo'/>
+              <h5> currency:{cryptos.currency} </h5>
+              <h5>status:{cryptos.status}</h5>
+              <h5>market cap:{cryptos.market_cap}</h5>
+              <h5>ranking :{cryptos.rank}</h5>
+              <h5>ID:{cryptos.id}</h5>
               {/* <p>{cryptos.contributed_by}</p> */}
               {/* <Link to={`/beers/${beer._id}`}>See more !</Link> */}
             </div>
