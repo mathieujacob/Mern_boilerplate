@@ -59,7 +59,7 @@ Promise.all([User.deleteMany(), Article.deleteMany()])
   })
   .then(() => {
     console.log(`${userDocs.length} users created`);
-    console.log(`${articleDocs.length} street arts created`);
+    console.log(`${articleDocs.length} articles created`);
     
     mongoose.disconnect();
   })

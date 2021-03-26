@@ -44,9 +44,9 @@ const apiHandler = {
       .catch(errorHandler);
   },
 
-  getItems() {
+  getArticles() {
     return service
-      .get("/api/items")
+      .get("/api/articles")
       .then((res) => res.data)
       .catch(errorHandler);
   },
