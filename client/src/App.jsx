@@ -19,6 +19,7 @@ function App() {
         <Route exact path="/signin" component={Signin} />
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/crypto" component={ListCrypto} />
+        <Route exact path="/api/articles" component={Info} />
         <Route exact path="/crypto/:id" component={SingleCrypto}/> 
         {/* <Route exact path="/info" component={Info}/>  */}
         <ProtectedRoute exact path="/profile" component={Profile} />

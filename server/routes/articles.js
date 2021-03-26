@@ -5,7 +5,7 @@ const articles = require("./../models/Article");
 
 router.get("/", (req, res, next) => {
   articles
-    .find()
+ .find()
     .then((articlesDocuments) => {
       res.status(200).json(articlesDocuments);
     })

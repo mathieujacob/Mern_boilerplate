@@ -46,10 +46,24 @@ const apiHandler = {
 
   getArticles() {
     return service
-      .get("/api/articles")
+      .get("/api/articles/")
       .then((res) => res.data)
       .catch(errorHandler);
   },
+
+  getArticles(ArticlesId) {
+    return service
+      .get("/api/articles/" + ArticlesId)
+      .then((res) => res.data)
+      .catch(errorHandler);
+  },
+  addArticles(uploadData) {
+    return service
+      .post("/api/articles", uploadData)
+      .then((res) => res.data)
+      .catch(errorHandler);
+  },
+
 };
 
 export default apiHandler;
