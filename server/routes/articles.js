@@ -43,12 +43,13 @@ router.post("/", uploader.single("photo"), (req, res, next) => {
 });
 
 router.patch("/edit/:id", uploader.single("photo"), (req, res, next) => {
-  console.log(req.body);
   req.body.photo = req.file.path;
 
   articles
     .findByIdAndUpdate(req.params.id, req.body, { new: true })
     .then(() => {
+      console.log(req.body);
+      console.log(req.params.id);
       res.status(200).json({ message: `article updated!` });
     })
     .catch((err) => next(err));
@@ -66,7 +67,6 @@ router.delete("/:id", (req, res, next) => {
         })
         .catch((err) => next(err));
     });
-
 });
 
 module.exports = router;

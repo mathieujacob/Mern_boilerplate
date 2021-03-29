@@ -12,6 +12,8 @@ import Profile from "./pages/Profile";
 import Info from "./pages/Info";
 import FormInfo from "./components/FormInfo";
 import UpdateInfo from "./components/UpdateInfo";
+import superForm from "./components/Forms/superForm"
+import superUpdateForm from "./components/Forms/superupdateForm"
 
 function App() {
   return (
@@ -25,8 +27,8 @@ function App() {
         <Route exact path="/api/articles" component={Info} />
         <Route exact path="/crypto/:id" component={SingleCrypto}/> 
         <Route exact path="/api/article/:id" component={InfoDets}/> 
-        <Route exact path="/api/articles/create" component={FormInfo}/> 
-        <ProtectedRoute exact path="/api/article/edit/:id" component={UpdateInfo} />
+        <Route exact path="/api/articles/create" component={superForm}/> 
+        <Route exact path="/api/article/edit/:id" component={superUpdateForm} />
         <ProtectedRoute exact path="/profile" component={Profile} />
       </Switch>
     </div>

@@ -1,5 +1,6 @@
 import axios from "axios";
 
+
 const service = axios.create({
   baseURL: process.env.REACT_APP_BACKEND_URL,
   withCredentials: true, // Cookie is sent to client when using this service. (used for session)
@@ -58,10 +59,10 @@ const apiHandler = {
       .catch(errorHandler);
   },
   addArticles(uploadData) {
-    return service
-      .post("/api/articles", uploadData)
-      .then((res) => res.data)
-      .catch(errorHandler);
+    return service.post('/api/articles/', uploadData)
+    .then((res) => res.data)
+    .catch(errorHandler)
+
   },
 
   deleteArticles(ArticlesId) {
@@ -71,14 +72,13 @@ const apiHandler = {
       .catch(errorHandler);
   },
 
-  UpdateArticles(ArticlesId, data) {
+  updateArticles(ArticlesId, data) {
 
-    return service
-      .patch("api/articles/edit/"+ ArticlesId, data)
+    return service.patch("api/articles/edit/"+ ArticlesId, data)
       .then((res) => res.data)
       .catch(errorHandler);
   },
-
+  
 
   getUser(UserId) {
     console.log(UserId);
