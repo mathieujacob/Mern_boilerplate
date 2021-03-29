@@ -30,6 +30,7 @@ class ListCrypto extends Component {
       return <div>Loading....</div>;
     }
     return (
+      
       <div>
         <h1>ALL THE Crypto</h1>
         {this.state.crypto.map((cryptos) => {

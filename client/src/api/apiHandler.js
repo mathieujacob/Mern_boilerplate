@@ -7,7 +7,6 @@ const service = axios.create({
 
 function errorHandler(error) {
   if (error.response.data) {
-    console.log(error.response && error.response.data);
     throw error;
   }
   throw error;
@@ -46,12 +45,12 @@ const apiHandler = {
 
   getArticles() {
     return service
-      .get("/api/articles/")
+      .get("/api/articles")
       .then((res) => res.data)
       .catch(errorHandler);
   },
 
-  getArticles(ArticlesId) {
+  getArticle(ArticlesId) {
     return service
       .get("/api/articles/" + ArticlesId)
       .then((res) => res.data)

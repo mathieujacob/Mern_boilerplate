@@ -4,12 +4,14 @@ const articles = require("./../models/Article");
 // const user = require("./../models/User")
 
 router.get("/", (req, res, next) => {
-  articles
- .find()
+  console.log("je suis dans le get");
+  articles.find()
     .then((articlesDocuments) => {
+      console.log("je suis dans le then");
       res.status(200).json(articlesDocuments);
     })
     .catch((error) => {
+      console.log("je suis dans le error");
       next(error);
     });
 });
