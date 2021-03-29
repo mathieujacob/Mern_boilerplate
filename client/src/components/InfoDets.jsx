@@ -11,8 +11,9 @@ class InfoDets extends Component {
 
       componentDidMount() {
         let ArticlesId = this.props.match.params.id;
-       
+       console.log(ArticlesId);
         api.getArticle(ArticlesId).then((ArticleFromApi) => {
+          console.log(ArticlesId);
           this.setState({ article: ArticleFromApi });
         });
       }

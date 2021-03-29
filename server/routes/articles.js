@@ -9,11 +9,9 @@ router.get("/", (req, res, next) => {
   articles
     .find()
     .then((articlesDocuments) => {
-      console.log("je suis dans le then");
       res.status(200).json(articlesDocuments);
     })
     .catch((error) => {
-      console.log("je suis dans le error");
       next(error);
     });
 });
@@ -21,6 +19,7 @@ router.get("/", (req, res, next) => {
 router.get("/:id", (req, res, next) => {
   articles
     .findById(req.params.id)
+
     .then((articlesDocument) => {
       res.status(200).json(articlesDocument);
     })
@@ -34,22 +33,21 @@ router.post("/", uploader.single("photo"), (req, res, next) => {
   const newArticle = { title, author, contenu, publiDate, photo };
 
   articles
-    .create(
-      newArticle
-    )
+    .create(newArticle)
 
     .then((createdArticles) => {
+      console.log("je suis dans le then");
       res.json(createdArticles);
     })
     .catch((err) => next(err));
 });
 
 router.patch("/edit/:id", uploader.single("photo"), (req, res, next) => {
-    console.log(req.body)
+  console.log(req.body);
   req.body.photo = req.file.path;
-  
+
   articles
-    .findByIdAndUpdate(req.params.id, req.body, {new:true})
+    .findByIdAndUpdate(req.params.id, req.body, { new: true })
     .then(() => {
       res.status(200).json({ message: `article updated!` });
     })
@@ -68,10 +66,7 @@ router.delete("/:id", (req, res, next) => {
         })
         .catch((err) => next(err));
     });
-  //         .catch((err) => next(err));
-  //     }
-  //   })
-  //   .catch((err) => next(err));
+
 });
 
 module.exports = router;
