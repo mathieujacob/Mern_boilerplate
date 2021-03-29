@@ -12,6 +12,7 @@ class UpdateInfo extends Component {
     UserId:"",
   };
 
+
   handleChange = (event) => {
     const key = event.target.name;
     const value = event.target.value;
@@ -20,6 +21,8 @@ class UpdateInfo extends Component {
   };
 
   handleSubmit = (event) => {
+   
+    console.log("hello to my handle");
     event.preventDefault();
     let data = {
       title: this.state.title,
@@ -28,10 +31,12 @@ class UpdateInfo extends Component {
       publiDate: this.state.publiDate,
       UserId: this.state.UserId,
     };
+    const ArticlesId = this.props.match.params.id
     apiHandler
-    .UpdateArticles(data)
-      .then((data) => {
-        this.props.context.setUser(data);
+    .UpdateArticles(ArticlesId, data )
+      .then(() => {
+        this.props.context.setUser();
+        this.props.history.push("/api/articles")
       })
       .catch((error) => {
         console.log(error);
@@ -39,27 +44,7 @@ class UpdateInfo extends Component {
       });
   };
 
-  addStreetArtAndRedirectToDetailPage = (e) => {
-      console.log("hello to my onclick");
-    // To send information with "form-data" (like in Postman)
-    const uploadData = new FormData();
-    uploadData.append("title", this.state.title);
-    uploadData.append("author", this.state.author);
-    uploadData.append("contenu", this.state.contenu);
-    uploadData.append("publiDate", this.state.publiDate);
-    uploadData.append("userId", this.state.userId);
-
-    apiHandler
-      .UpdateArticles(uploadData)
-      .then((createdStreetArt) => {
-        // Redirect the user to another page
-        this.props.history.push("/api/articles"); // TODO: change the URL
-      })
-      .catch((err) => {
-        console.log("Error while adding the street art: ", err);
-      });
-  };
-
+ 
   render() {
     // if (this.props.context.user) {
     //   return <Redirect to="/" />;
@@ -79,7 +64,7 @@ class UpdateInfo extends Component {
         <input type="Date" id="publiDate" name="publiDate"onChange={this.handleChange} />
         <label htmlFor="userId">userId</label>
         <input type="text" id="userId" name="userId"onChange={this.handleChange} />
-        <button onClick={this.addStreetArtAndRedirectToDetailPage}>Submit</button>
+        <button>Submit</button>
       </form>
       </div>
     );

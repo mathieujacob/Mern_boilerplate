@@ -13,6 +13,7 @@ class Info extends Component {
     componentDidMount() {
         api.getArticles().then((ArticleFromApi) => {
           this.setState({ article: ArticleFromApi });
+          
         });
 
         
@@ -23,7 +24,7 @@ class Info extends Component {
        
         apiHandler
         .deleteArticles(ArticlesId)
-        .then((ArticlesId) => {
+        .then(() => {
           console.log("SUCCESS!");
            this.setState({ ArticlesId: null })
           this.props.history.push("/api/articles")
@@ -49,7 +50,7 @@ class Info extends Component {
                 <h2>{infos.title} </h2>
                 <h3>{infos.author}</h3>
                 <Link to={`/api/article/${infos._id}`}>See more !</Link>
-                <Link to={`/api/article/update/${infos._id}`}>Update</Link>
+                <Link to={`/api/article/edit/${infos._id}`}>Update</Link>
                 <button onClick={() => this.handleDelete(infos._id)}> delete</button>
               </div>
             );

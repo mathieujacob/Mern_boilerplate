@@ -26,8 +26,7 @@ function App() {
         <Route exact path="/crypto/:id" component={SingleCrypto}/> 
         <Route exact path="/api/article/:id" component={InfoDets}/> 
         <Route exact path="/api/articles/create" component={FormInfo}/> 
-        <ProtectedRoute exact path="/api/article/update/:id" component={UpdateInfo} />
-        {/* <Route exact path="/info" component={Info}/>  */}
+        <ProtectedRoute exact path="/api/article/edit/:id" component={UpdateInfo} />
         <ProtectedRoute exact path="/profile" component={Profile} />
       </Switch>
     </div>
