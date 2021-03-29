@@ -7,11 +7,11 @@ router.get("/", (req, res, next) => {
   articles
     .find()
     .then((articlesDocuments) => {
-      console.log("je suis dans le then");
+      
       res.status(200).json(articlesDocuments);
     })
     .catch((error) => {
-      console.log("je suis dans le error");
+      
       next(error);
     });
 });
@@ -19,6 +19,7 @@ router.get("/", (req, res, next) => {
 router.get("/:id", (req, res, next) => {
   articles
     .findById(req.params.id)
+    
     .then((articlesDocument) => {
       res.status(200).json(articlesDocument);
     })
@@ -28,18 +29,20 @@ router.get("/:id", (req, res, next) => {
 router.post("/", (req, res, next) => {
   let { title, author, contenu, publiDate } = req.body;
   console.log(req.body);
-  console.log(req.session.currentUser);
+  console.log("je suis dans le post");
 
   articles
     .create({
+    
       title: title,
       author: author,
       contenu: contenu,
       publiDate: publiDate,
       userId: req.session.currentUser,
+    
     })
-
     .then((createdArticles) => {
+      console.log("je suis dans le then");
       res.json(createdArticles);
     })
     .catch((err) => next(err));

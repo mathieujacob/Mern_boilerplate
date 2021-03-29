@@ -51,6 +51,7 @@ const apiHandler = {
   },
 
   getArticle(ArticlesId) {
+    console.log(ArticlesId);
     return service
       .get("/api/articles/" + ArticlesId)
       .then((res) => res.data)
@@ -59,6 +60,20 @@ const apiHandler = {
   addArticles(uploadData) {
     return service
       .post("/api/articles", uploadData)
+      .then((res) => res.data)
+      .catch(errorHandler);
+  },
+
+  deleteArticles(ArticlesId) {
+    return service
+      .delete("/api/articles/"+ ArticlesId)
+      .then((res) => res.data)
+      .catch(errorHandler);
+  },
+
+  UpdateArticles(ArticlesId) {
+    return service
+      .delete("/api/articles/"+ ArticlesId)
       .then((res) => res.data)
       .catch(errorHandler);
   },

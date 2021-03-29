@@ -10,7 +10,8 @@ import Signup from "./pages/Signup";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Profile from "./pages/Profile";
 import Info from "./pages/Info";
-import FormInfo from "./../src/components/Forms/FormInfo";
+import FormInfo from "./components/FormInfo";
+import UpdateInfo from "./components/UpdateInfo";
 
 function App() {
   return (
@@ -24,7 +25,8 @@ function App() {
         <Route exact path="/api/articles" component={Info} />
         <Route exact path="/crypto/:id" component={SingleCrypto}/> 
         <Route exact path="/api/article/:id" component={InfoDets}/> 
-        <Route exact path="/api/article/create" component={FormInfo}/> 
+        <Route exact path="/api/articles/create" component={FormInfo}/> 
+        <ProtectedRoute exact path="/api/article/update/:id" component={UpdateInfo} />
         {/* <Route exact path="/info" component={Info}/>  */}
         <ProtectedRoute exact path="/profile" component={Profile} />
       </Switch>
