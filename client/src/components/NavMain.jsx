@@ -34,6 +34,11 @@ const NavMain = (props) => {
               </NavLink>
             </li>
             <li>
+              <NavLink to="/api/articles">
+               <p>info</p>
+              </NavLink>
+            </li>
+            <li>
               <p onClick={handleLogout}>Logout</p>
             </li>
           </React.Fragment>

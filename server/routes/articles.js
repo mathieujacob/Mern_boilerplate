@@ -50,6 +50,7 @@ router.post("/", (req, res, next) => {
 
 router.patch("/edit/:id", (req, res, next) => {
   const id = req.params.id;
+  console.log(req.body);
   console.log("hello'");
   articles.findByIdAndUpdate(req.params.id, req.body).then(() => {
     res.status(200).json({ message: `article updated!` });
@@ -58,6 +59,7 @@ router.patch("/edit/:id", (req, res, next) => {
 
 router.delete("/:id", (req, res, next) => {
   const id = req.params.id
+
   articles
     .findByIdAndDelete(req.params.id)
 
