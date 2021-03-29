@@ -1,6 +1,8 @@
 const express = require("express");
 const router = new express.Router();
 const articles = require("./../models/Article");
+const uploader = require("./../config/cloudinary");
+
 // const user = require("./../models/User")
 
 router.get("/", (req, res, next) => {
@@ -25,19 +27,16 @@ router.get("/:id", (req, res, next) => {
     .catch(next);
 });
 
-router.post("/", (req, res, next) => {
+router.post("/", uploader.single("photo"), (req, res, next) => {
   let { title, author, contenu, publiDate } = req.body;
-  console.log(req.body);
-  console.log(req.session.currentUser);
+  const photo = req.file.path;
+
+  const newArticle = { title, author, contenu, publiDate, photo };
 
   articles
-    .create({
-      title: title,
-      author: author,
-      contenu: contenu,
-      publiDate: publiDate,
-      userId: req.session.currentUser,
-    })
+    .create(
+      newArticle
+    )
 
     .then((createdArticles) => {
       res.json(createdArticles);
@@ -45,23 +44,29 @@ router.post("/", (req, res, next) => {
     .catch((err) => next(err));
 });
 
-router.patch("/edit/:id", (req, res, next) => {
-  const id = req.params.id;
-  console.log("hello'");
-  articles.findByIdAndUpdate(req.params.id, req.body).then(() => {
-    res.status(200).json({ message: `article updated!` });
-  });
+router.patch("/edit/:id", uploader.single("photo"), (req, res, next) => {
+    console.log(req.body)
+  req.body.photo = req.file.path;
+  
+  articles
+    .findByIdAndUpdate(req.params.id, req.body, {new:true})
+    .then(() => {
+      res.status(200).json({ message: `article updated!` });
+    })
+    .catch((err) => next(err));
 });
 
 router.delete("/:id", (req, res, next) => {
-  const id = req.params.id
   articles
     .findByIdAndDelete(req.params.id)
 
     .then((deletedarticle) => {
-      res.status(200).json({
-        message: "The article has been deleted",
-      });
+      res
+        .status(200)
+        .json({
+          message: "The article has been deleted",
+        })
+        .catch((err) => next(err));
     });
   //         .catch((err) => next(err));
   //     }

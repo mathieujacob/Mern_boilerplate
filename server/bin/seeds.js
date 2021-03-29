@@ -40,6 +40,7 @@ let articleDocs = [
     contenu: "What it is Homeboy?",
     publiDate: "1987-09-28",
     userId: userDocs[0]._id,
+    photo : "https://images.unsplash.com/photo-1508830524289-0adcbe822b40?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1911&q=80"
   }),
   new Article({
     title: "Teach you how to dougie",
@@ -48,6 +49,7 @@ let articleDocs = [
       "It go, right foot up, left foot slide Left foot up, right foot slide Basically, I'm saying either way, we 'bout to slide, ayy Cant let this one slide, ayy",
     publiDate: "1995-09-28",
     userId: userDocs[1]._id,
+    photo : "https://images.unsplash.com/photo-1508830524289-0adcbe822b40?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1911&q=80"
   }),
 ];
 
