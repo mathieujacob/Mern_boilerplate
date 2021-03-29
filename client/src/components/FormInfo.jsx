@@ -10,7 +10,7 @@ class FormInfo extends Component {
     contenu:"",
     publiDate: null,
     UserId:"",
-    photo:"",
+   
   };
 
   handleChange = (event) => {
@@ -28,7 +28,7 @@ class FormInfo extends Component {
       contenu: this.state.contenu,
       publiDate: this.state.publiDate,
       UserId: this.state.UserId,
-      photo:this.state.photo
+     
     };
     apiHandler
     .addArticles(data)
@@ -57,7 +57,7 @@ class FormInfo extends Component {
     uploadData.append("contenu", this.state.contenu);
     uploadData.append("publiDate", this.state.publiDate);
     uploadData.append("userId", this.state.userId);
-    uploadData.append('photo', this.state.photo)
+    
 
     apiHandler
       .addArticles(uploadData)
@@ -78,7 +78,7 @@ class FormInfo extends Component {
     return (
       <div>
       <h1>Create</h1>
-      <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
+      <form onChange={this.handleChange} onSubmit={this.handleSubmit} enctype="multipart/form-data">
         <label htmlFor="title">Title</label>
         <input type="text" id="title" name="title" onChange={this.handleChange}/>
         <label htmlFor="author">Author</label>
@@ -89,8 +89,7 @@ class FormInfo extends Component {
         <input type="Date" id="publiDate" name="publiDate"onChange={this.handleChange} />
         <label htmlFor="userId">userId</label>
         <input type="text" id="userId" name="userId"onChange={this.handleChange} />
-        <label htmlFor="photo">Photo</label>
-        <input type="file" id="photo" name="photo"onChange={this.handleFileChange} />
+     
         <button onClick={this.addStreetArtAndRedirectToDetailPage}>Submit</button>
       </form>
       </div>
