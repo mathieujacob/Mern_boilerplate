@@ -4,8 +4,8 @@ const articles = require("./../models/Article");
 // const user = require("./../models/User")
 
 router.get("/", (req, res, next) => {
-  console.log("je suis dans le get");
-  articles.find()
+  articles
+    .find()
     .then((articlesDocuments) => {
       console.log("je suis dans le then");
       res.status(200).json(articlesDocuments);
@@ -29,6 +29,7 @@ router.post("/", (req, res, next) => {
   let { title, author, contenu, publiDate } = req.body;
   console.log(req.body);
   console.log(req.session.currentUser);
+
   articles
     .create({
       title: title,
@@ -44,9 +45,16 @@ router.post("/", (req, res, next) => {
     .catch((err) => next(err));
 });
 
+router.patch("/edit/:id", (req, res, next) => {
+  const id = req.params.id;
+  console.log("hello'");
+  articles.findByIdAndUpdate(req.params.id, req.body).then(() => {
+    res.status(200).json({ message: `article updated!` });
+  });
+});
+
 router.delete("/:id", (req, res, next) => {
-  let id = req.session.currentUser;
-  console.log(id);
+  const id = req.params.id
   articles
     .findByIdAndDelete(req.params.id)
 
