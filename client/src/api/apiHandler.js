@@ -23,6 +23,7 @@ const apiHandler = {
   },
 
   signin(userInfo) {
+    console.log(userInfo);
     return service
       .post("/api/auth/signin", userInfo)
       .then((res) => res.data)
@@ -83,7 +84,16 @@ const apiHandler = {
   getUser(UserId) {
     console.log(UserId);
     return service
-      .get("/", UserId)
+      .get("/api/user/"+ UserId)
+      .then((res) => res.data)
+      .catch(errorHandler);
+  },
+
+
+  UpdateUser(UserId, data) {
+
+    return service
+      .patch("api/user/edit/"+ UserId, data)
       .then((res) => res.data)
       .catch(errorHandler);
   },

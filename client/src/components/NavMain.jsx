@@ -7,7 +7,6 @@ import "../styles/NavMain.css";
 
 const NavMain = (props) => {
   const { context } = props;
-
   function handleLogout() {
     apiHandler
       .logout()
@@ -18,7 +17,7 @@ const NavMain = (props) => {
         console.log(error);
       });
   }
-
+  // +context.user._id
   return (
     <nav className="NavMain">
       <NavLink exact to="/">
@@ -29,7 +28,7 @@ const NavMain = (props) => {
         {context.isLoggedIn && (
           <React.Fragment>
             <li>
-              <NavLink to="/profile">
+              <NavLink to={"/api/user/"+ context.user._id}>
                 {context.user && context.user.email}
               </NavLink>
             </li>
@@ -42,7 +41,7 @@ const NavMain = (props) => {
               <p onClick={handleLogout}>Logout</p>
             </li>
           </React.Fragment>
-        )}
+         )}
         {!context.isLoggedIn && (
           <React.Fragment>
              <li>

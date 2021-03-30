@@ -12,6 +12,8 @@ import Profile from "./pages/Profile";
 import Info from "./pages/Info";
 import FormInfo from "./components/FormInfo";
 import UpdateInfo from "./components/UpdateInfo";
+import UpdateProfile from "./components/UpdateProfile";
+
 
 function App() {
   return (
@@ -27,7 +29,8 @@ function App() {
         <Route exact path="/api/article/:id" component={InfoDets}/> 
         <Route exact path="/api/articles/create" component={FormInfo}/> 
         <ProtectedRoute exact path="/api/article/edit/:id" component={UpdateInfo} />
-        <ProtectedRoute exact path="/profile" component={Profile} />
+        <ProtectedRoute exact path="/api/user/edit/:id" component={UpdateProfile} />
+        <ProtectedRoute exact path="/api/user/:id" component={Profile} />
       </Switch>
     </div>
   );
