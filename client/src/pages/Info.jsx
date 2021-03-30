@@ -51,6 +51,7 @@ class Info extends Component {
                 <h3>{infos.author}</h3>
                 <Link to={`/api/article/${infos._id}`}>See more !</Link>
                 <Link to={`/api/article/edit/${infos._id}`}>Update</Link>
+                <img src={infos.photo} alt="whatevs"/>
                 <button onClick={() => this.handleDelete(infos._id)}> delete</button>
               </div>
             );

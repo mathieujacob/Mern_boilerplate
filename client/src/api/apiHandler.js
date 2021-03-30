@@ -72,9 +72,9 @@ const apiHandler = {
       .catch(errorHandler);
   },
 
-  updateArticles(ArticlesId, data) {
+  updateArticles(ArticlesId, uploadData) {
 
-    return service.patch("api/articles/edit/"+ ArticlesId, data)
+    return service.patch("api/articles/edit/"+ ArticlesId, uploadData)
       .then((res) => res.data)
       .catch(errorHandler);
   },
