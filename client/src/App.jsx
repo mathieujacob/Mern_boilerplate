@@ -10,10 +10,11 @@ import Signup from "./pages/Signup";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Profile from "./pages/Profile";
 import Info from "./pages/Info";
-import FormInfo from "./components/FormInfo";
-import UpdateInfo from "./components/UpdateInfo";
-import UpdateProfile from "./components/UpdateProfile";
-
+// import FormInfo from "./components/FormInfo";
+// import UpdateInfo from "./components/UpdateInfo";
+import superForm from "./components/Forms/superForm"
+import superUpdateForm from "./components/Forms/superupdateForm"
+import UpdateProfile from "./components/UpdateProfile"
 
 function App() {
   return (
@@ -26,11 +27,11 @@ function App() {
         <Route exact path="/crypto" component={ListCrypto} />
         <Route exact path="/api/articles" component={Info} />
         <Route exact path="/crypto/:id" component={SingleCrypto}/> 
-        <Route exact path="/api/article/:id" component={InfoDets}/> 
-        <Route exact path="/api/articles/create" component={FormInfo}/> 
-        <ProtectedRoute exact path="/api/article/edit/:id" component={UpdateInfo} />
-        <ProtectedRoute exact path="/api/user/edit/:id" component={UpdateProfile} />
+        <ProtectedRoute exact path="/api/article/:id" component={InfoDets}/> 
+        <ProtectedRoute exact path="/api/articles/create" component={superForm}/> 
+        <ProtectedRoute exact path="/api/article/edit/:id" component={superUpdateForm} />
         <ProtectedRoute exact path="/api/user/:id" component={Profile} />
+        <ProtectedRoute exact path="/api/user/edit/:id" component={UpdateProfile} />
       </Switch>
     </div>
   );

@@ -24,13 +24,23 @@ router.get("/:id", (req, res, next) => {
     .then((userDocument) => {
       res.status(200).json(userDocument);
     })
-    .catch(next);
+    .catch((error) => {
+      next(error);
+    });
 });
 
-router.patch("/edit/:id", (req, res, next) => {
-  user.findByIdAndUpdate(req.params.id, req.body, { new: true }).then(() => {
-    res.json({ message: `user ${req.params.id} is updated.` });
-  });
+router.patch("/edit/:id", uploader.single("avatar"), (req, res, next) => {
+  req.body.avatar = req.file.path;
+
+  user
+    .findByIdAndUpdate(req.params.id, req.body, { new: true })
+    .then(() => {
+      res.json({ message: `user ${req.params.id} is updated.` });
+    })
+
+    .catch((error) => {
+      next(error);
+    });
 });
 
 router.delete("/:id", (req, res, next) => {
@@ -40,9 +50,14 @@ router.delete("/:id", (req, res, next) => {
     .findByIdAndDelete(req.params.id)
 
     .then((deleteduser) => {
-      res.status(200).json({
-        message: "The user has been deleted",
-      });
+      res
+        .status(200)
+        .json({
+          message: "The user has been deleted",
+        })
+        .catch((error) => {
+          next(error);
+        });
     });
 });
 

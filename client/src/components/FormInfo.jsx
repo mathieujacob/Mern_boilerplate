@@ -10,6 +10,8 @@ class FormInfo extends Component {
     contenu:"",
     publiDate: null,
     UserId:"",
+    photo:null,
+   
   };
 
   handleChange = (event) => {
@@ -17,6 +19,12 @@ class FormInfo extends Component {
     const value = event.target.value;
       console.log(key);
     this.setState({ [key]: value });
+  };
+
+  handleFileChange = (event) =>{
+    this.setState({
+      photo: event.target.files[0],
+    })
   };
 
   handleSubmit = (event) => {
@@ -27,6 +35,8 @@ class FormInfo extends Component {
       contenu: this.state.contenu,
       publiDate: this.state.publiDate,
       UserId: this.state.UserId,
+      photo: this.state.photo
+     
     };
     apiHandler
     .addArticles(data)
@@ -37,7 +47,10 @@ class FormInfo extends Component {
         console.log(error);
         // Display error message here, if you set the state
       });
+     
   };
+
+ 
 
   addStreetArtAndRedirectToDetailPage = (e) => {
     // To send information with "form-data" (like in Postman)
@@ -47,6 +60,8 @@ class FormInfo extends Component {
     uploadData.append("contenu", this.state.contenu);
     uploadData.append("publiDate", this.state.publiDate);
     uploadData.append("userId", this.state.userId);
+    uploadData.append('photo', this.state.photo)
+    
 
     apiHandler
       .addArticles(uploadData)
@@ -55,9 +70,9 @@ class FormInfo extends Component {
         this.props.history.push("/api/articles"); // TODO: change the URL
       })
       .catch((err) => {
-        console.log("Error while adding the street art: ", err);
+        console.log("Error while adding the article: ", err);
       });
-  };
+    };
 
   render() {
     // if (this.props.context.user) {
@@ -67,7 +82,7 @@ class FormInfo extends Component {
     return (
       <div>
       <h1>Create</h1>
-      <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
+      <form onChange={this.handleChange} onSubmit={this.handleSubmit} >
         <label htmlFor="title">Title</label>
         <input type="text" id="title" name="title" onChange={this.handleChange}/>
         <label htmlFor="author">Author</label>
@@ -76,8 +91,9 @@ class FormInfo extends Component {
         <input type="text" id="contenu" name="contenu"onChange={this.handleChange} />
         <label htmlFor="publiDate">Publication Date</label>
         <input type="Date" id="publiDate" name="publiDate"onChange={this.handleChange} />
-        <label htmlFor="userId">userId</label>
-        <input type="text" id="userId" name="userId"onChange={this.handleChange} />
+        <label htmlFor="photo">Photo</label>
+        <input type="file" id="file" name="file"onChange={this.handleFileChange} />
+     
         <button onClick={this.addStreetArtAndRedirectToDetailPage}>Submit</button>
       </form>
       </div>

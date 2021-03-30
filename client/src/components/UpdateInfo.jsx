@@ -9,7 +9,7 @@ class UpdateInfo extends Component {
     author: "",
     contenu:"",
     publiDate: null,
-    UserId:"",
+    photo:null,
   };
 
 
@@ -20,6 +20,16 @@ class UpdateInfo extends Component {
     this.setState({ [key]: value });
   };
 
+  handleFileChange = (event) =>{
+    console.log(`added ${event.target.files[0]}`);
+    this.setState({
+      photo:event.target.files[0]
+    })
+  }
+
+
+
+
   handleSubmit = (event) => {
    
     console.log("hello to my handle");
@@ -29,11 +39,11 @@ class UpdateInfo extends Component {
       author: this.state.author,
       contenu: this.state.contenu,
       publiDate: this.state.publiDate,
-      UserId: this.state.UserId,
+      photo: this.state.photo,
     };
     const ArticlesId = this.props.match.params.id
     apiHandler
-    .UpdateArticles(ArticlesId, data )
+    .updateArticles(ArticlesId, data )
       .then(() => {
         this.props.context.setUser();
         this.props.history.push("/api/articles")
@@ -53,7 +63,7 @@ class UpdateInfo extends Component {
     return (
       <div>
       <h1>update</h1>
-      <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
+      <form onChange={this.handleChange} onSubmit={this.handleSubmit} encType= "multipart/form-data">
         <label htmlFor="title">Title</label>
         <input value={this.state.title} type="text" id="title" name="title" onChange={this.handleChange}/>
         <label htmlFor="author">Author</label>
@@ -62,8 +72,8 @@ class UpdateInfo extends Component {
         <input type="text" id="contenu" name="contenu"onChange={this.handleChange} />
         <label htmlFor="publiDate">Publication Date</label>
         <input type="Date" id="publiDate" name="publiDate"onChange={this.handleChange} />
-        <label htmlFor="userId">userId</label>
-        <input type="text" id="userId" name="userId"onChange={this.handleChange} />
+        <label htmlFor="photo">Photo</label>
+        <input type="file" id="photo" name="photo"onChange={this.handleFileChange} />
         <button>Submit</button>
       </form>
       </div>
