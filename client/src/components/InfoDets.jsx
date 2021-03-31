@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import api from "./../api/apiHandler";
+import api from "../api/apiHandler";
 
 class InfoDets extends Component {
 
     state = {
-        article: [],
+        article: null,
       };
 
      
@@ -24,15 +24,17 @@ class InfoDets extends Component {
         if (this.state.article === null) {
             return <div>Loading...</div>;
           }
+          console.log(this.state.article)
 
         return (
+          
         
       <div> 
 
        <h1>{this.state.article.title} </h1> 
        <p> by {this.state.article.author} </p>
        <p> {this.state.article.contenu} </p>
-       <p> {this.state.article.publiDate} </p>
+       <p> {this.state.article.userId.userName} </p>
 
       </div>
         )

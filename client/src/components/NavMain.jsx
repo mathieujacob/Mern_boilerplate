@@ -21,30 +21,32 @@ const NavMain = (props) => {
   return (
     <nav className="NavMain">
       <NavLink exact to="/">
-        <h3 className="logo"><img src="logo.png" alt="cryptorama"/></h3>
+        <h3 className="logo">
+          <img src="logo.png" alt="cryptorama" />
+        </h3>
       </NavLink>
       <ul className="nav-list">
-        
         {context.isLoggedIn && (
           <React.Fragment>
             <li>
-              <NavLink to={"/api/user/"+ context.user._id}>
+              <NavLink to={"/api/user/" + context.user._id}>
+              {/* + context.user._id */}
                 {context.user && context.user.email}
               </NavLink>
             </li>
             <li>
               <NavLink to="/api/articles">
-               <p>info</p>
+                <p>info</p>
               </NavLink>
             </li>
             <li>
               <p onClick={handleLogout}>Logout</p>
             </li>
           </React.Fragment>
-         )}
+        )}
         {!context.isLoggedIn && (
           <React.Fragment>
-             <li>
+            <li>
               <NavLink to="/crypto">Cryptos</NavLink>
             </li>
             <li>
@@ -56,10 +58,7 @@ const NavMain = (props) => {
           </React.Fragment>
         )}
       </ul>
-      
     </nav>
-
-
   );
 };
 

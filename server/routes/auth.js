@@ -57,6 +57,8 @@ router.get("/isLoggedIn", (req, res, next) => {
 
   const id = req.session.currentUser;
   
+  console.log(req.session.currentUser)
+  
   User.findById(id)
     .select("-password")
     .then((userDocument) => {

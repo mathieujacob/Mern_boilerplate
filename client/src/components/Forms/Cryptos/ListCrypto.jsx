@@ -25,6 +25,8 @@ class ListCrypto extends Component {
       });
   }
 
+  
+
   render() {
     if (this.state.crypto === null) {
       return <div>Loading....</div>;

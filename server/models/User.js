@@ -7,12 +7,12 @@ const userSchema = new Schema({
   password: { type: String, required: true },
   role: { type: String, enum: ["user", "admin"], default: "user" },
   avatar: String,
-  // myCrypto: {
-  //   type: Schema.Types.ObjectId,
-  //   ref: "apicall",
-  // },
-  myCrypto:String,
-  article: [""],
+  favoriteCryptos: [String],
+
+  article: {
+    type: Schema.Types.ObjectId,
+    ref: "article",
+  },
 });
 
 const User = mongoose.model("User", userSchema);

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from "axios";
+import Faves from "./favorites/faves"
 
 class SingleCrypto extends Component {
 
@@ -21,6 +22,8 @@ class SingleCrypto extends Component {
           .catch((error) => {
              console.log(error);
           });
+
+          axios.patch("http://localhost:4000/")
       }
     
 
@@ -42,7 +45,7 @@ class SingleCrypto extends Component {
          <h4> The status off this cryptocurrency is {this.state.crypto.filter(curr => curr.id === id)[0].status}</h4> 
          <h5> Here is the price date : {this.state.crypto.filter(curr => curr.id === id)[0].price_date}</h5> 
          <h5> Current Price of the {this.state.crypto.filter(curr => curr.id === id)[0].id} : {this.state.crypto.filter(curr => curr.id === id)[0].price} €</h5>
-      
+         <button onClick>add to my faves</button> 
       </div>
         )
        

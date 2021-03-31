@@ -6,7 +6,7 @@ import apiHandler from './../api/apiHandler';
 
 class Info extends Component {
     state = {
-      article: [],
+      article: null,
     };
   
   
@@ -34,7 +34,7 @@ class Info extends Component {
 
   
     render() {
-      if (this.state.Article === null) {
+      if (this.state.article === null) {
         return <div>Loading....</div>;
       }
    
@@ -44,11 +44,14 @@ class Info extends Component {
           <Link to={`/api/articles/create`}>create one article</Link>
       
           {this.state.article.map((infos) => {
+            console.log(infos.userId.userName)
                
             return (
               <div key={infos._id}>
                 <h2>{infos.title} </h2>
                 <h3>{infos.author}</h3>
+                <p>{infos.userId.email}</p>
+                <p>added by {infos.userId.userName}</p>
                 <Link to={`/api/article/${infos._id}`}>See more !</Link>
                 <Link to={`/api/article/edit/${infos._id}`}>Update</Link>
                 <img src={infos.photo} alt="whatevs"/>
