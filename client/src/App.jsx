@@ -15,6 +15,7 @@ import Info from "./pages/Info";
 import superForm from "./components/Forms/superForm"
 import superUpdateForm from "./components/Forms/superupdateForm"
 import UpdateProfile from "./components/UpdateProfile"
+import BarChart from "./components/BarCharts"
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         <ProtectedRoute exact path="/api/article/edit/:id" component={superUpdateForm} />
         <ProtectedRoute exact path="/api/user/:id" component={Profile} />
         <ProtectedRoute exact path="/api/user/edit/:id" component={UpdateProfile} />
+        <BarChart/>
       </Switch>
     </div>
   );
