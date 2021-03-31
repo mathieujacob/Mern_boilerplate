@@ -39,23 +39,23 @@ class Info extends Component {
       }
    
       return (
-        <div>
-          <h1>ALL THE INFO</h1>
-          <Link to={`/api/articles/create`}>create one article</Link>
-      
+        <div class="crypto-dets">
+           <p class="crypto-header-bar"><Link class="crypto-header-bar-hover" to={`/`}>Home</Link>  All the news </p>
+          <h3>Blog Review </h3>
+          <br></br>
+         <p> <button class="link-home"><Link to={`/api/articles/create`}> Submit your own article</Link> </button> </p>
+         <br></br>
           {this.state.article.map((infos) => {
             console.log(infos.userId.userName)
                
             return (
               <div key={infos._id}>
-                <h2>{infos.title} </h2>
-                <h3>{infos.author}</h3>
-                <p>{infos.userId.email}</p>
-                <p>added by {infos.userId.userName}</p>
-                <Link to={`/api/article/${infos._id}`}>See more !</Link>
-                <Link to={`/api/article/edit/${infos._id}`}>Update</Link>
-                <img src={infos.photo} alt="whatevs"/>
-                <button onClick={() => this.handleDelete(infos._id)}> delete</button>
+                 <img class="img-info" src={infos.photo} alt="whatevs"/><br></br>
+                <span class="info-title">{infos.title} </span>
+                <p>by {infos.author}</p>
+                <button class="link-home"><Link to={`/api/article/${infos._id}`}>See more </Link></button>
+                <button class="link-home"><Link to={`/api/article/edit/${infos._id}`}>Update</Link></button>
+                <button class="link-home" onClick={() => this.handleDelete(infos._id)}> delete</button>
               </div>
             );
           })}

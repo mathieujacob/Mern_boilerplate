@@ -32,7 +32,7 @@ class Profile extends Component {
         <p>Username: {this.state.User.userName}</p>
         <p> email : {this.state.User.email} </p>
          <p> role : {this.state.User.role} </p>
-         <p> article: {this.state.User.article.title}</p>
+         {/* <p> article: {this.state.User.article.title}</p> */}
         <p>myCrypto : {this.state.User.myCrypto}</p>
         <Link to={`/api/user/edit/${this.state.User._id}`}>Edit Profile</Link>
         <button>delete User</button>

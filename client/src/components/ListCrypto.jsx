@@ -2,11 +2,14 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
+
+
+
 class ListCrypto extends Component {
   state = {
     crypto: null,
   };
-
+  
 
   componentDidMount() {
     axios
@@ -33,22 +36,32 @@ class ListCrypto extends Component {
     }
     return (
       
-      <div>
-        <h1>ALL THE Crypto</h1>
+      <div class="crypto-dets">
+        
+           <p class="crypto-header-bar"><Link class="crypto-header-bar-hover" to={`/`}>Home</Link> > All the cryptocurrencies </p>
+        <h3>Live Market Price</h3>
+        <table class="crypto-all-table">
+           <tr> 
+                  <th>Logo</th>
+                  <th>Name</th>
+                  <th>Price</th>
+                  <th>#</th>
+                  <th>Details</th>
+                
+                </tr>
         {this.state.crypto.map((cryptos) => {
           return (
-            <div key={cryptos.id}>
-              <img src={cryptos.logo_url} alt="" />
-              <h2>{cryptos.currency} </h2>
-              <h3>{cryptos.status}</h3>
-              <h4>{cryptos.market_cap}</h4>
-              <h5>{cryptos.rank}</h5>
-              <h6>{cryptos.id}</h6>
-              {/* <p>{cryptos.contributed_by}</p> */}
-              <Link to={`/crypto/${cryptos.id}`}>See more !</Link>
-            </div>
+            <tr key={cryptos.id}>
+              <td><img class="logo-home" src={cryptos.logo_url} alt="" /></td>
+              <td><h2>{cryptos.name} </h2></td>
+              <td><h3>{cryptos.price}</h3></td>
+              <td> <h5>{cryptos.rank}</h5></td>
+             
+              <td> <button class="link-home"> <Link to={`/crypto/${cryptos.id}`}>See more</Link></button> </td> 
+              </tr>
           );
         })}
+        </table>
       </div>
     );
   }

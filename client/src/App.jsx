@@ -1,9 +1,9 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 import NavMain from "./components/NavMain";
-import ListCrypto from "./components/Forms/Cryptos/ListCrypto";
+import ListCrypto from "./components/ListCrypto";
 import InfoDets from "./components/InfoDets";
-import SingleCrypto from "./components/Forms/Cryptos/SingleCrypto";
+import SingleCrypto from "./components/SingleCrypto";
 import Home from "./pages/Home";
 import Signin from "./pages/Signin";
 import Signup from "./pages/Signup";
@@ -17,6 +17,7 @@ import superUpdateForm from "./components/Forms/superupdateForm"
 import UpdateProfile from "./components/UpdateProfile"
 import ProfileEdit from "./pages/profileEdit"
 import userDelete from "./pages/superDelete"
+import BarChart from "./components/BarCharts"
 
 function App() {
   return (
@@ -35,6 +36,8 @@ function App() {
         <ProtectedRoute exact path="/api/article/edit/:id" component={superUpdateForm} />
         <ProtectedRoute exact path="/api/user/:id" component={Profile} />
         <ProtectedRoute exact path="/api/user/edit/:id" component={ProfileEdit} />
+        <ProtectedRoute exact path="/api/user/edit/:id" component={UpdateProfile} />
+        <BarChart/>
       </Switch>
     </div>
   );
