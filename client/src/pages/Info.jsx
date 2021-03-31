@@ -52,7 +52,7 @@ class Info extends Component {
                  <img class="img-info" src={infos.photo} alt="whatevs"/><br></br>
                 <span class="info-title">{infos.title} </span>
                 <p>by {infos.author}</p>
-                <button class="link-home"><Link to={`/api/article/${infos._id}`}>See more </Link></button>
+                <button class="link-home"><Link to={`/api/article/${infos._id}`}>See more </Link></button> 
                 <button class="link-home"><Link to={`/api/article/edit/${infos._id}`}>Update</Link></button>
                 <button class="link-home" onClick={() => this.handleDelete(infos._id)}> delete</button>
               </div>
