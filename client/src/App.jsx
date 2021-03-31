@@ -15,6 +15,8 @@ import Info from "./pages/Info";
 import superForm from "./components/Forms/superForm"
 import superUpdateForm from "./components/Forms/superupdateForm"
 import UpdateProfile from "./components/UpdateProfile"
+import ProfileEdit from "./pages/profileEdit"
+import userDelete from "./pages/superDelete"
 import BarChart from "./components/BarCharts"
 
 function App() {
@@ -28,10 +30,12 @@ function App() {
         <Route exact path="/crypto" component={ListCrypto} />
         <Route exact path="/api/articles" component={Info} />
         <Route exact path="/crypto/:id" component={SingleCrypto}/> 
+        <Route exact path="/api/user" component={userDelete}/> 
         <ProtectedRoute exact path="/api/article/:id" component={InfoDets}/> 
         <ProtectedRoute exact path="/api/articles/create" component={superForm}/> 
         <ProtectedRoute exact path="/api/article/edit/:id" component={superUpdateForm} />
         <ProtectedRoute exact path="/api/user/:id" component={Profile} />
+        <ProtectedRoute exact path="/api/user/edit/:id" component={ProfileEdit} />
         <ProtectedRoute exact path="/api/user/edit/:id" component={UpdateProfile} />
         <BarChart/>
       </Switch>

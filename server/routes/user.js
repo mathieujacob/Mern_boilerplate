@@ -9,6 +9,7 @@ router.get("/", (req, res, next) => {
   user
     .find()
     .select("-password")
+    .populate("article", "title")
     .then((userDocuments) => {
       res.status(200).json(userDocuments);
     })
@@ -21,6 +22,7 @@ router.get("/:id", (req, res, next) => {
   user
     .findById(req.params.id)
     .select("-password")
+    .populate("article")
     .then((userDocument) => {
       res.status(200).json(userDocument);
     })
@@ -30,11 +32,14 @@ router.get("/:id", (req, res, next) => {
 });
 
 router.patch("/edit/:id", uploader.single("avatar"), (req, res, next) => {
+  
+ 
   req.body.avatar = req.file.path;
 
   user
     .findByIdAndUpdate(req.params.id, req.body, { new: true })
     .then(() => {
+    
       res.json({ message: `user ${req.params.id} is updated.` });
     })
 
@@ -42,6 +47,14 @@ router.patch("/edit/:id", uploader.single("avatar"), (req, res, next) => {
       next(error);
     });
 });
+
+router.patch("/addFaves/:id", (req, res, next) => {
+  console.log("toto")
+  res.status(200)
+  
+
+});
+
 
 router.delete("/:id", (req, res, next) => {
   const id = req.params.id;

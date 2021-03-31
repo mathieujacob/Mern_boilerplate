@@ -1,6 +1,5 @@
 import axios from "axios";
 
-
 const service = axios.create({
   baseURL: process.env.REACT_APP_BACKEND_URL,
   withCredentials: true, // Cookie is sent to client when using this service. (used for session)
@@ -53,52 +52,60 @@ const apiHandler = {
   },
 
   getArticle(ArticlesId) {
-    
     return service
       .get("/api/articles/" + ArticlesId)
       .then((res) => res.data)
       .catch(errorHandler);
   },
   addArticles(uploadData) {
-    return service.post('/api/articles/', uploadData)
-    .then((res) => res.data)
-    .catch(errorHandler)
-
+    return service
+      .post("/api/articles/", uploadData)
+      .then((res) => res.data)
+      .catch(errorHandler);
   },
 
   deleteArticles(ArticlesId) {
     return service
-      .delete("/api/articles/"+ ArticlesId)
+      .delete("/api/articles/" + ArticlesId)
       .then((res) => res.data)
       .catch(errorHandler);
   },
 
   updateArticles(ArticlesId, uploadData) {
-
-    return service.patch("api/articles/edit/"+ ArticlesId, uploadData)
-      .then((res) => res.data)
-      .catch(errorHandler);
-  },
-  
-
-  getUser(UserId) {
-    console.log(UserId);
     return service
-      .get("/api/user/"+ UserId)
+      .patch("api/articles/edit/" + ArticlesId, uploadData)
       .then((res) => res.data)
       .catch(errorHandler);
   },
 
-
-  UpdateUser(UserId, data) {
-console.log(data);
+  getUser() {
     return service
-      .patch("api/user/edit/"+ UserId, data)
+      .get("/api/user/")
       .then((res) => res.data)
       .catch(errorHandler);
   },
 
+  getUsers(UserId) {
+    return service
+      .get("/api/user/" + UserId)
 
+      .then((res) => res.data)
+      .catch(errorHandler);
+  },
+
+  editUser(UserId, uploadData) {
+    return service
+      .patch("/api/user/edit/" + UserId, uploadData)
+      .then((res) => res.data)
+      .catch(errorHandler);
+  },
+
+  deleteUser(UserId) {
+    return service
+      .delete("/api/user/" + UserId)
+      .then((res) => res.data)
+      .catch(errorHandler);
+  },
 };
 
 export default apiHandler;

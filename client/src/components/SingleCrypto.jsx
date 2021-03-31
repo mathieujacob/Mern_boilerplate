@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from "axios";
+import Faves from "./Forms/Cryptos/favorites/faves"
 import BarChart from "./BarCharts"
 import { Link } from "react-router-dom";
 import BarChartSupply from "./BarChartsSupply"
@@ -24,6 +25,8 @@ class SingleCrypto extends Component {
           .catch((error) => {
              console.log(error);
           });
+
+          axios.patch("http://localhost:4000/")
       }
     
 
@@ -61,6 +64,7 @@ class SingleCrypto extends Component {
          <h4> The status off this cryptocurrency is {this.state.crypto.filter(curr => curr.id === id)[0].status}</h4> 
          <h5> Here is the price date : {this.state.crypto.filter(curr => curr.id === id)[0].price_date}</h5> 
          <h5> Current Price of the {this.state.crypto.filter(curr => curr.id === id)[0].id} : {this.state.crypto.filter(curr => curr.id === id)[0].price} €</h5>
+         <button onClick>add to my faves</button> 
          <h5> The First Trade was : {this.state.crypto.filter(curr => curr.id === id)[0].first_trade} </h5>
          <h5> The actual circulating supply is : {this.state.crypto.filter(curr => curr.id === id)[0].circulating_supply} </h5>
          <h5> The maximum circulating supply is : {this.state.crypto.filter(curr => curr.id === id)[0].max_supply} </h5> */}

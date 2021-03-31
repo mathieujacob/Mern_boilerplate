@@ -6,7 +6,7 @@ import apiHandler from './../api/apiHandler';
 
 class Info extends Component {
     state = {
-      article: [],
+      article: null,
     };
   
   
@@ -34,18 +34,19 @@ class Info extends Component {
 
   
     render() {
-      if (this.state.Article === null) {
+      if (this.state.article === null) {
         return <div>Loading....</div>;
       }
    
       return (
         <div class="crypto-dets">
-           <p class="crypto-header-bar"><Link class="crypto-header-bar-hover" to={`/`}>Home</Link> > All the news </p>
+           <p class="crypto-header-bar"><Link class="crypto-header-bar-hover" to={`/`}>Home</Link>  All the news </p>
           <h3>Blog Review </h3>
           <br></br>
          <p> <button class="link-home"><Link to={`/api/articles/create`}> Submit your own article</Link> </button> </p>
          <br></br>
           {this.state.article.map((infos) => {
+            console.log(infos.userId.userName)
                
             return (
               <div key={infos._id}>

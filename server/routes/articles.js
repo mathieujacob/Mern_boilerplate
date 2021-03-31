@@ -8,6 +8,7 @@ const uploader = require("./../config/cloudinary");
 router.get("/", (req, res, next) => {
   articles
     .find()
+    .populate("userId", "userName")
     .then((articlesDocuments) => {
       res.status(200).json(articlesDocuments);
     })
@@ -19,6 +20,7 @@ router.get("/", (req, res, next) => {
 router.get("/:id", (req, res, next) => {
   articles
     .findById(req.params.id)
+    .populate("userId")
 
     .then((articlesDocument) => {
       res.status(200).json(articlesDocument);
@@ -28,7 +30,12 @@ router.get("/:id", (req, res, next) => {
 
 router.post("/", uploader.single("photo"), (req, res, next) => {
   let { title, author, contenu, publiDate } = req.body;
-  const photo = req.file.path;
+
+  if (!req.file) {
+    return res.status(400).json({ message: "Image required" });
+  }
+
+  let photo = req.file.path;
 
   const newArticle = { title, author, contenu, publiDate, photo };
 
@@ -43,6 +50,9 @@ router.post("/", uploader.single("photo"), (req, res, next) => {
 });
 
 router.patch("/edit/:id", uploader.single("photo"), (req, res, next) => {
+  if (!req.file) {
+    return res.status(400).json({ message: "Image required" });
+  }
   req.body.photo = req.file.path;
 
   articles
