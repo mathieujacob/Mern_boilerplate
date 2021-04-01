@@ -1,5 +1,6 @@
 import React from "react";
 import api from "./../../api/apiHandler";
+import { Link } from 'react-router-dom';
 
 class superUpdateForm extends React.Component {
   state = {
@@ -45,31 +46,45 @@ class superUpdateForm extends React.Component {
 
   render() {
     return (
-      <div className="containerA">
-        <h1>Update an article</h1>
-        <label> Fill in the Blanks</label>
+      <div class="crypto-dets">
+       
+        <p class="crypto-header-bar"><Link class="crypto-header-bar-hover" to={`/api/articles`}>All The Articles</Link>  > Update this article </p>
+        <h3>Update an article</h3>
+        <br></br>
+        <div class="crypto-info-update-all">
         <div className="col">
+        <label> Title </label>
           <input
             type="text"
             value={this.state.title}
             onChange={this.handleChange}
             name="title"
-            placeholder="title"
+            placeholder="new title..."
           />
+          <br></br>
+          <br></br>
+           <label> Author </label>
           <input
             type="text"
             value={this.state.author}
             onChange={this.handleChange}
             name="author"
-            placeholder="author"
+            placeholder=" new author..."
           />
+            <br></br>
+          <br></br>
+           <label> Content </label>
           <input
+          class="form-content"
             type="text"
             value={this.state.contenu}
             onChange={this.handleChange}
             name="contenu"
-            placeholder="Content"
+            placeholder="new content..."
           />
+               <br></br>
+          <br></br>
+          <label>Date </label>
           <input
             type="date"
             value={this.state.publiDate}
@@ -78,13 +93,18 @@ class superUpdateForm extends React.Component {
             placeholder="Date of publication"
           />
         </div>
-        <label>Photo</label>
+        <br></br>
+        
         <div className="containerA">
-          <input type="file" name="photo" onChange={this.handleFileChange} />
+        <label for="file" class="label-file">Upload your photo</label>
+          <input id="file" class="input-file" type="file" name="photo" onChange={this.handleFileChange} />
         </div>
-        <button className="btn" onClick={this.updateArticleAndRedirect}>
+        </div>
+        <br></br>
+        <button class="link-home4" onClick={this.updateArticleAndRedirect}>
           Update an article
         </button>
+      
       </div>
     );
   }

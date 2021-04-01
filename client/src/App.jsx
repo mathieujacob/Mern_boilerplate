@@ -33,7 +33,6 @@ function App() {
         <ProtectedRoute exact path="/api/article/edit/:id" component={superUpdateForm} />
         <ProtectedRoute exact path="/api/user/:id" component={Profile} />
         <ProtectedRoute exact path="/api/user/edit/:id" component={ProfileEdit} />
-        
         <BarChart/>
       </Switch>
     </div>

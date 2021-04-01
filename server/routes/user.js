@@ -56,7 +56,7 @@ router.patch("/addFaves/:id", (req, res, next) => {
   console.log(id)
    
   
-  user.findByIdAndUpdate(id, {favoriteCryptos: "BTN"}   )
+  user.findByIdAndUpdate(id, {favoriteCryptos: "ETH"}   )
   .then(() =>{
     res.json({message: 'cryptos updated'})
   })

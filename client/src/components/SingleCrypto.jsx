@@ -27,14 +27,16 @@ class SingleCrypto extends Component {
           });
 
           axios
-          .patch(`http://localhost:4000/addFaves/${id}`)
+          .patch(`http://localhost:4000/addFaves/${id}`,  )
           .then((response) =>{
             console.log(response);
             this.setState({crypto:response.data})
           })
       }
 
-  
+      // editFaves(e) =>{
+
+      // }
     
 
     render() {
