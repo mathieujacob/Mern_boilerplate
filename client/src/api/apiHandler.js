@@ -106,6 +106,15 @@ const apiHandler = {
       .then((res) => res.data)
       .catch(errorHandler);
   },
+
+  editFave(ApiId, uploadData) {
+    return service
+      .patch("/api/user/edit/" + ApiId, uploadData)
+      .then((res) => res.data)
+      .catch(errorHandler);
+  },
+
+
 };
 
 export default apiHandler;

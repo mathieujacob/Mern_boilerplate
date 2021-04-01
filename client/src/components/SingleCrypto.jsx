@@ -26,8 +26,15 @@ class SingleCrypto extends Component {
              console.log(error);
           });
 
-          axios.patch("http://localhost:4000/")
+          axios
+          .patch(`http://localhost:4000/addFaves/${id}`)
+          .then((response) =>{
+            console.log(response);
+            this.setState({crypto:response.data})
+          })
       }
+
+  
     
 
     render() {
@@ -58,6 +65,7 @@ class SingleCrypto extends Component {
          <div class="crypto-link-info">
          <Link class="crypto-header-bar-hover" to={`/api/articles`}> <p class="crypto-link-info-text">More Infos about {this.state.crypto.filter(curr => curr.id === id)[0].name}</p></Link>
          </div>
+         <button>Add a favorite</button>
          </div>
         
          {/* <h3> The Market Cap is currently at {this.state.crypto.filter(curr => curr.id === id)[0].market_cap} €</h3> 

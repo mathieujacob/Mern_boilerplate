@@ -49,8 +49,21 @@ router.patch("/edit/:id", uploader.single("avatar"), (req, res, next) => {
 });
 
 router.patch("/addFaves/:id", (req, res, next) => {
-  console.log("toto")
-  res.status(200)
+ 
+  const id = req.params.id
+
+  console.log("------")
+  console.log(id)
+   
+  
+  user.findByIdAndUpdate(id, {favoriteCryptos: "BTN"}   )
+  .then(() =>{
+    res.json({message: 'cryptos updated'})
+  })
+    .catch((error) => {
+      next(error);
+    });
+  
   
 
 });

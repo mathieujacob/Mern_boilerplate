@@ -10,11 +10,8 @@ import Signup from "./pages/Signup";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Profile from "./pages/Profile";
 import Info from "./pages/Info";
-// import FormInfo from "./components/FormInfo";
-// import UpdateInfo from "./components/UpdateInfo";
 import superForm from "./components/Forms/superForm"
 import superUpdateForm from "./components/Forms/superupdateForm"
-import UpdateProfile from "./components/UpdateProfile"
 import ProfileEdit from "./pages/profileEdit"
 import userDelete from "./pages/superDelete"
 import BarChart from "./components/BarCharts"
@@ -36,7 +33,7 @@ function App() {
         <ProtectedRoute exact path="/api/article/edit/:id" component={superUpdateForm} />
         <ProtectedRoute exact path="/api/user/:id" component={Profile} />
         <ProtectedRoute exact path="/api/user/edit/:id" component={ProfileEdit} />
-        <ProtectedRoute exact path="/api/user/edit/:id" component={UpdateProfile} />
+        
         <BarChart/>
       </Switch>
     </div>
