@@ -40,7 +40,7 @@ class Info extends Component {
    
       return (
         <div class="crypto-dets">
-           <p class="crypto-header-bar"><Link class="crypto-header-bar-hover" to={`/`}>Home</Link>  All the news </p>
+           <p class="crypto-header-bar"><Link class="crypto-header-bar-hover" to={`/`}>Home</Link>  > News </p>
           <h3>Blog Review </h3>
           <br></br>
          <p> <button class="link-home"><Link to={`/api/articles/create`}> Submit your own article</Link> </button> </p>
@@ -50,12 +50,15 @@ class Info extends Component {
                
             return (
               <div key={infos._id}>
-                 <img class="img-info" src={infos.photo} alt="whatevs"/><br></br>
+                <div class="crypto-info-dets-all">
+                 <img class="img-info" src={infos.photo} alt="whatevs"/><br></br> <br></br>
                 <span class="info-title">{infos.title} </span>
-                <p>by {infos.author}</p>
-                <button class="link-home"><Link to={`/api/article/${infos._id}`}>See more </Link></button> 
-                <button class="link-home"><Link to={`/api/article/edit/${infos._id}`}>Update</Link></button>
+                <p> {infos.author}</p>
+                <br></br>
+                <button class="link-home"><Link to={`/api/article/${infos._id}`}>Read this article </Link></button> &nbsp;
+                <button class="link-home"><Link to={`/api/article/edit/${infos._id}`}>Update</Link></button> &nbsp;
                 <button class="link-home" onClick={() => this.handleDelete(infos._id)}> delete</button>
+              </div>
               </div>
             );
           })}

@@ -1,5 +1,6 @@
 import React from "react";
 import api from "./../api/apiHandler"
+import { Link } from 'react-router-dom';
 
 class profileEdit extends React.Component {
   state = {
@@ -47,49 +48,64 @@ editUser =(e) =>{
     })
 }
  
-  
 
   render() {
+    const UserId = this.props.match.params.id;
     return  (
-        <div className="containerA">
-          <h1>Edit your profile</h1>
-          <label> Fill in the Blanks</label>
+        <div class="crypto-dets">
+             <p class="crypto-header-bar"><Link class="crypto-header-bar-hover" to={`/api/user/${UserId}`}>My Profile</Link>  >  Edit </p>
+          <h3>Edit your profile</h3>
+          <br></br>
+          <div class="crypto-info-update-all">
           <div className="col">
+          <label> Username </label>
             <input
               type="text"
               value={this.state.userName}
               onChange={this.handleChange}
               name="userName"
-              placeholder="userName"
+              placeholder="new username..."
             />
+            <br></br>
+              <label> Email </label>
             <input
               type="text"
               value={this.state.email}
               onChange={this.handleChange}
               name="email"
-              placeholder="email"
+              placeholder="new email..."
             />
+            <br></br>
+              <label> Role </label>
             <input
               type="text"
               value={this.state.role}
               onChange={this.handleChange}
               name="role"
-              placeholder="role"
+              placeholder="new role..."
             />
+            <br></br>
+              <label> Favourite Crypto </label>
             <input
-              type="date"
+              type="text"
               value={this.state.myCrypto}
               onChange={this.handleChange}
               name="Crypto"
-              placeholder="Favourites Crypto"
+              placeholder="Favourite crypto..."
             />
           </div>
-          <label>Avatar</label>
+          <br></br>
+           
           <div className="containerA">
-            <input type="file" name="avatar" onChange={this.handleFileChange} />
+          <label for="file" class="label-file">Upload your avatar</label>
+            <input id="file" class="input-file" type="file" type="file" name="avatar" onChange={this.handleFileChange} />
           </div>
-          <button className="btn" onClick={this.editUser}>
-            Update a User
+          <br></br>
+          </div>
+           <br></br>
+           
+          <button class="link-home4" onClick={this.editUser}>
+            Update my profile
           </button>
         </div>
       );;

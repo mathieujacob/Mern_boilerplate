@@ -35,6 +35,7 @@ class FormSignup extends Component {
     }
 
     return (
+      <div class="login">
       <form onSubmit={this.handleSubmit}>
         <label htmlFor="email">Email</label>
         <input
@@ -52,8 +53,9 @@ class FormSignup extends Component {
           id="password"
           name="password"
         />
-        <button>Submit</button>
+        <button type="submit" class="btn btn-primary btn-block btn-large">Submit</button>
       </form>
+      </div>
     );
   }
 }
